@@ -24,6 +24,8 @@ export const createQueryClient = () => {
         });
       },
       onError: (error, variables, _onMutateResult, mutation) => {
+        console.error(error);
+
         onErrorToast({
           meta: mutation.meta,
           error,

@@ -9,15 +9,15 @@ import type { QueryPolicyName } from '@shared/vue-query';
 
 import { pimBaseQueryKeys } from '@pages/product-list/api/product.queries';
 
-export const usePimQueryClient = () => {
-  const queryClient = createQueryClient();
+export const pimQueryClient = createQueryClient();
 
-  provide(VUE_QUERY_CLIENT, queryClient);
+export const usePimQueryClient = () => {
+  provide(VUE_QUERY_CLIENT, pimQueryClient);
 
   // window.__TANSTACK_QUERY_CLIENT__ = queryClient;
 
   applyQueryPolicy(
-    queryClient,
+    pimQueryClient,
     new Map<QueryKey, QueryPolicyName>([
       [pimBaseQueryKeys, 'dynamic'],
     ]),

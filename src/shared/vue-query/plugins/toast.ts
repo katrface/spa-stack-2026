@@ -32,9 +32,9 @@ type OnErrorToastParam = {
 };
 
 export const useToastByMeta = () => {
-  const toast = useToast();
-
   const onSuccessToast = ({ meta, data, variables }: OnSuccessToastParam) => {
+    const toast = useToast();
+
     const successToast = meta?.successToast;
 
     if (!successToast) {
@@ -48,6 +48,8 @@ export const useToastByMeta = () => {
   };
 
   const onErrorToast = ({ meta, error, variables }: OnErrorToastParam) => {
+    const toast = useToast();
+
     const errorToast = meta?.errorToast;
 
     if (!errorToast) {

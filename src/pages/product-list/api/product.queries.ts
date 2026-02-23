@@ -11,7 +11,7 @@ type ProductListInfinitePayload = {
   filter: MaybeRefOrGetter<string>;
 }
 
-type ProductDetailsPayload = {
+export type ProductDetailsPayload = {
   id: MaybeRefOrGetter<string | null>;
 };
 
@@ -41,6 +41,6 @@ export const productListInfiniteOptions = () => ({ filter }: ProductListInfinite
 export const productDetailsOptions = ({ id }: ProductDetailsPayload) =>
   queryOptions({
       queryKey: productQueryKeys.productDetails({ id }),
-      queryFn: async () => {},
+      queryFn: async () => ({ id }),
       enabled: () => !!toValue(id)
     })

@@ -1,0 +1,1 @@
+export { productDetailsOptions } from './api'
