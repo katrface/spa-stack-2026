@@ -11,6 +11,9 @@ export default defineConfig({
       components: {
         dirs: []
       },
+      autoImport: {
+        dts: false,
+      },
       ui: {
         colors: {
           primary: 'green',

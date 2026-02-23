@@ -1,5 +1,6 @@
 import { toValueOnError, toValueOnSuccess } from './shared';
 import type { MaybeGetterOnError, MaybeGetterOnSuccess } from './shared';
+import { useToast } from '@nuxt/ui/composables';
 
 export type Toast = {
   color?: 'success' | 'error';
@@ -43,6 +44,7 @@ export const useToastByMeta = () => {
 
     toast.add({
       color: 'success',
+      icon: 'i-lucide-check',
       ...toValueOnSuccess(successToast, data, variables),
     });
   };
@@ -58,6 +60,7 @@ export const useToastByMeta = () => {
 
     toast.add({
       color: 'error',
+      icon: 'i-lucide-circle-x',
       ...toValueOnError(errorToast, error, variables),
     });
   };
