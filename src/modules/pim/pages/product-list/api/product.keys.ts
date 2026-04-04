@@ -1,12 +1,11 @@
 import { MaybeRefOrGetter } from "vue";
 import { TProductDetailsPayload } from "./product.validators";
 import { Nullable } from '@shared/type-utils/index';
+import { pimBaseQueryKeys } from "@pim/shared/vue-query";
 
 export type ProductListInfinitePayload = {
   filter: MaybeRefOrGetter<string>;
 }
-
-export const pimBaseQueryKeys = ['fbs'] as const;
 
 export type ProductDetailsPayload = MaybeRefOrGetter<Nullable<TProductDetailsPayload>>
 

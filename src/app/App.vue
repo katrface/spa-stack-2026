@@ -2,11 +2,9 @@
 import BaseLayout from '@components/BaseLayout.vue';
 import { ru } from '@nuxt/ui/locale'
 import { RouterView } from 'vue-router'
-import { VueQueryDevtools } from '@tanstack/vue-query-devtools'
 
 </script>
 <template>
-  <VueQueryDevtools />
   <UApp :locale="ru">
     <div class="flex h-screen w-full">
       <BaseLayout />

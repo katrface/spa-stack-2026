@@ -1,6 +1,6 @@
-import { pimQueryClient } from './init/usePimQueryClient';
 import { productDetailsOptions } from '@pim/pages/product-list';
 import { PIM_PAGE_NAME } from '@pim/shared/configs/pages';
+import { pimQueryClient } from '@pim/shared/vue-query';
 import { RouteRecordRaw } from 'vue-router';
 
 export const PIM_ROUTES: RouteRecordRaw[] = [
