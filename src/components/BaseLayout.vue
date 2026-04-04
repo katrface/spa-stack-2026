@@ -1,14 +1,14 @@
 <script setup lang="ts">
 // В v4 типы импортируются из @nuxt/ui
 import type { NavigationMenuItem } from '@nuxt/ui'
-import { PAGE_NAME } from '@shared/config/pages';
+import { PIM_PAGE_NAME } from '@pim';
 
 const items: NavigationMenuItem[][] = [
   [
     {
       label: 'Товары',
       icon: 'i-lucide-package',
-      to: { name: PAGE_NAME.PRODUCTS.INDEX }
+      to: { name: PIM_PAGE_NAME.HOME }
     },
     {
       label: 'Цены',
@@ -65,7 +65,10 @@ const items: NavigationMenuItem[][] = [
   <div class="flex flex-col h-screen w-64 border-r border-[var(--ui-border-muted)] bg-[var(--ui-bg)] p-4">
     <div class="mb-6 px-4">
       <h1 class="text-xl font-bold flex items-center gap-2">
-        <UIcon name="i-lucide-layout-dashboard" class="text-primary" />
+        <UIcon
+          name="i-lucide-layout-dashboard"
+          class="text-primary"
+        />
         Marketplace
       </h1>
     </div>
@@ -86,10 +89,17 @@ const items: NavigationMenuItem[][] = [
         color="neutral"
         class="w-full justify-start gap-3 px-3 py-2"
       >
-        <UAvatar src="https://github.com" size="sm" />
+        <UAvatar
+          src="https://github.com"
+          size="sm"
+        />
         <div class="text-left">
-          <p class="text-sm font-medium">Max Jdanov</p>
-          <p class="text-xs text-[var(--ui-text-muted)]">Premium Plan</p>
+          <p class="text-sm font-medium">
+            Max Jdanov
+          </p>
+          <p class="text-xs text-[var(--ui-text-muted)]">
+            Premium Plan
+          </p>
         </div>
       </UButton>
     </div>
