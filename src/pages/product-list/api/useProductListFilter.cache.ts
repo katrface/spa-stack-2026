@@ -1,5 +1,5 @@
 import { InfiniteData, useQueryClient } from "@tanstack/vue-query"
-import { productQueryKeys } from "./product.queries";
+import { productQueryKeys } from "./product.keys";
 import { listFilter } from "@shared/vue-query";
 
 type Product = { productId: string }

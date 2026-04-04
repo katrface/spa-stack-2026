@@ -1,14 +1,18 @@
 import { mutationOptions } from '@shared/vue-query';
-import { ProductDetailsPayload, productQueryKeys } from './product.queries';
+import { productQueryKeys } from './product.keys';
+import { TProductDetailsPayload, VProductDetailsPayload } from './product.validators';
 
 export const archiveProductOptions = () => mutationOptions({
-    mutationFn: async (payload: ProductDetailsPayload) => { console.log(payload.id) },
+    mutationFn: async (payload: TProductDetailsPayload) => {
+      const validatedPayload = VProductDetailsPayload.assert(payload);
+      console.log(validatedPayload)
+    },
     meta: {
       successToast: (_data, variables) => ({
-        title: `Товар ${variables.id} архивирован`
+        title: `Товар ${variables.internalId} архивирован`
       }),
       errorToast: (_data, variables) => ({
-        title: `Не удалось архивировать ${variables.id}`
+        title: `Не удалось архивировать ${variables.internalId}`
       }),
 
       awaitInvalidates: (_data, varialbes) => [

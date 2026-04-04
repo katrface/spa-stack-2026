@@ -2,28 +2,11 @@ import {
   infiniteQueryOptions,
   queryOptions,
 } from '@tanstack/vue-query';
-import { MaybeRefOrGetter, toValue } from 'vue';
-
-
-export const pimBaseQueryKeys = ['fbs'];
-
-type ProductListInfinitePayload = {
-  filter: MaybeRefOrGetter<string>;
-}
-
-export type ProductDetailsPayload = {
-  id: MaybeRefOrGetter<string | null>;
-};
-
-// для центролизованного управления ключами
-export const productQueryKeys = {
-  all: () => [...pimBaseQueryKeys, 'products'],
-  allProductInfinityLists: () => [...productQueryKeys.all(), 'list', 'infinite'],
-  allDetails: () => [...productQueryKeys.all(), 'details'],
-
-  productListInfinite: (payload: ProductListInfinitePayload) => [...productQueryKeys.allProductInfinityLists(), payload],
-  productDetails: (payload: ProductDetailsPayload) => [...productQueryKeys.allDetails(), payload],
-}
+import { toValue } from 'vue';
+import { ProductDetailsPayload, ProductListInfinitePayload, productQueryKeys } from './product.keys';
+import { getProductDetails } from './product.endpoints';
+import { VProductDetailsPayload } from './product.validators';
+import { isValid } from '@shared/arktype-utils';
 
 // объеденины под queryOptions/infiniteQueryOptions, чтобы переиспользовать в useQuery/prefetchQuery и кастомизации options для конкретного случая
 export const productListInfiniteOptions = () => ({ filter }: ProductListInfinitePayload) =>
@@ -38,9 +21,12 @@ export const productListInfiniteOptions = () => ({ filter }: ProductListInfinite
   })
 
 // для tree shaking  каждая query в отдельной переменной
-export const productDetailsOptions = ({ id }: ProductDetailsPayload) =>
+export const productDetailsOptions = (payload: ProductDetailsPayload) =>
   queryOptions({
-      queryKey: productQueryKeys.productDetails({ id }),
-      queryFn: async () => ({ id }),
-      enabled: () => !!toValue(id)
+      queryKey: productQueryKeys.productDetails(payload),
+      queryFn: () => {
+        const validatedPayload = VProductDetailsPayload.assert(toValue(payload));
+        return getProductDetails(validatedPayload)
+      },
+      enabled: () => isValid(VProductDetailsPayload, toValue(payload))
     })

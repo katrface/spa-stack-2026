@@ -7,7 +7,7 @@ import { provide } from 'vue';
 import { applyQueryPolicy, createQueryClient } from '@shared/vue-query';
 import type { QueryPolicyName } from '@shared/vue-query';
 
-import { pimBaseQueryKeys } from '@pages/product-list/api/product.queries';
+import { pimBaseQueryKeys } from '@pages/product-list/api';
 
 export const pimQueryClient = createQueryClient();
 
