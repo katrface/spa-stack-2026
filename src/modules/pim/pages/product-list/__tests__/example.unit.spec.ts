@@ -1,10 +1,10 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import ProductTable from '../ui/ProductTable.vue'
-import { render } from 'vitest-browser-vue'
+import { renderApp } from '@tests/utils'
 
 describe('ProductTable', () => {
   it('отображает заголовок продукта', async () => {
-    const screen = render(ProductTable)
+    const screen = await renderApp(ProductTable)
 
     await expect(screen.container).toHaveTextContent('Пластиковый чемодан на колесах, с кодовым замком, белый');
   })

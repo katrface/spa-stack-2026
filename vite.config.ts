@@ -32,6 +32,7 @@ export default defineConfig({
       '@pages': fileURLToPath(new URL('./src/pages', import.meta.url)),
       '@app': fileURLToPath(new URL('./src/app', import.meta.url)),
       '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
+      '@tests': fileURLToPath(new URL('./tests', import.meta.url)),
 
       '@shared': fileURLToPath(new URL('./src/modules/shared', import.meta.url)),
       '@pim': fileURLToPath(new URL('./src/modules/pim', import.meta.url)),
