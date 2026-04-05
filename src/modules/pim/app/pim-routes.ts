@@ -8,7 +8,7 @@ export const PIM_ROUTES: RouteRecordRaw[] = [
     name: PIM_PAGE_NAME.HOME,
     path: '/pim',
     redirect: { name: PIM_PAGE_NAME.PRODUCTS.INDEX },
-    component: import('@pim/app/PimApp.vue'),
+    component: () => import('@pim/app/PimApp.vue'),
     children: [
       {
         name: PIM_PAGE_NAME.PRODUCTS.INDEX,

@@ -31,5 +31,5 @@
       "@pim": ["./src/modules/pim/index.ts"],
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "components.d.ts"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "components.d.ts", "tests/**/*.ts"]
 }

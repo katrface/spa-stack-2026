@@ -1,8 +1,10 @@
+/// <reference types="vitest/config" />
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import ui from '@nuxt/ui/vite'
 import { analyzer } from 'vite-bundle-analyzer'
+import { playwright } from '@vitest/browser-playwright'
 import path from 'node:path'
 
 export default defineConfig({
@@ -54,5 +56,26 @@ export default defineConfig({
         assetFileNames: 'assets/[name][extname]'
       }
     }
+  },
+  test: {
+    coverage: { provider: 'v8' },
+
+    include: [
+      '**/__tests__/**/*.unit.spec.ts',
+      '**/__tests__/**/*.visual.spec.ts',
+    ],
+    browser: {
+      provider: playwright(),
+      enabled: true,
+      headless: true,
+      instances: [
+        {
+          browser: 'chromium',
+          viewport: { width: 1280, height: 720 },
+        },
+      ],
+    },
+
+    setupFiles: ['./tests/setup.ts'],
   }
 })
