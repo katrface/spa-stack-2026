@@ -1,20 +1,22 @@
 import { MaybeRefOrGetter } from "vue";
 import { TProductDetailsPayload } from "./product.validators";
-import { Nullable } from '@shared/type-utils/index';
+import { Nullable } from "@shared/type-utils/index";
 import { pimBaseQueryKeys } from "@pim/shared/vue-query";
 
 export type ProductListInfinitePayload = {
   filter: MaybeRefOrGetter<string>;
-}
+};
 
-export type ProductDetailsPayload = MaybeRefOrGetter<Nullable<TProductDetailsPayload>>
+export type ProductDetailsPayload = MaybeRefOrGetter<Nullable<TProductDetailsPayload>>;
 
 // для центролизованного управления ключами
 export const productQueryKeys = {
-  all: () => [...pimBaseQueryKeys, 'products'] as const,
-  allProductInfinityLists: () => [...productQueryKeys.all(), 'list', 'infinite'] as const,
-  allDetails: () => [...productQueryKeys.all(), 'details'] as const,
+  all: () => [...pimBaseQueryKeys, "products"] as const,
+  allProductInfinityLists: () => [...productQueryKeys.all(), "list", "infinite"] as const,
+  allDetails: () => [...productQueryKeys.all(), "details"] as const,
 
-  productListInfinite: (payload: ProductListInfinitePayload) => [...productQueryKeys.allProductInfinityLists(), payload] as const,
-  productDetails: (payload: ProductDetailsPayload) => [...productQueryKeys.allDetails(), payload] as const,
-}
+  productListInfinite: (payload: ProductListInfinitePayload) =>
+    [...productQueryKeys.allProductInfinityLists(), payload] as const,
+  productDetails: (payload: ProductDetailsPayload) =>
+    [...productQueryKeys.allDetails(), payload] as const,
+};

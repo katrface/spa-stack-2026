@@ -1,21 +1,12 @@
 <script setup lang="ts">
-import { TProduct } from '../api';
+import { TProduct } from "../api";
 
-defineProps<{ row: TProduct }>()
+defineProps<{ row: TProduct }>();
 </script>
 
 <template>
-  <UPopover
-    mode="hover"
-    :open-delay="100"
-    :close-delay="150"
-  >
-    <UButton
-      icon="i-lucide-ellipsis"
-      color="neutral"
-      variant="ghost"
-      size="sm"
-    />
+  <UPopover mode="hover" :open-delay="100" :close-delay="150">
+    <UButton icon="i-lucide-ellipsis" color="neutral" variant="ghost" size="sm" />
 
     <template #content>
       <div class="flex flex-col p-1 min-w-32">

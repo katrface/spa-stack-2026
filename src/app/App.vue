@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import BaseLayout from '@components/BaseLayout.vue';
-import { ru } from '@nuxt/ui/locale'
-import { RouterView } from 'vue-router'
-
+import BaseLayout from "@components/BaseLayout.vue";
+import { ru } from "@nuxt/ui/locale";
+import { RouterView } from "vue-router";
 </script>
 <template>
   <UApp :locale="ru">

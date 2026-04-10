@@ -1,9 +1,9 @@
-import { toValueOnError, toValueOnSuccess } from './shared';
-import type { MaybeGetterOnError, MaybeGetterOnSuccess } from './shared';
-import { useToast } from '@nuxt/ui/composables';
+import { toValueOnError, toValueOnSuccess } from "./shared";
+import type { MaybeGetterOnError, MaybeGetterOnSuccess } from "./shared";
+import { useToast } from "@nuxt/ui/composables";
 
 export type Toast = {
-  color?: 'success' | 'error';
+  color?: "success" | "error";
   title: string;
   description?: string;
 };
@@ -43,8 +43,8 @@ export const useToastByMeta = () => {
     }
 
     toast.add({
-      color: 'success',
-      icon: 'i-lucide-check',
+      color: "success",
+      icon: "i-lucide-check",
       ...toValueOnSuccess(successToast, data, variables),
     });
   };
@@ -59,8 +59,8 @@ export const useToastByMeta = () => {
     }
 
     toast.add({
-      color: 'error',
-      icon: 'i-lucide-circle-x',
+      color: "error",
+      icon: "i-lucide-circle-x",
       ...toValueOnError(errorToast, error, variables),
     });
   };

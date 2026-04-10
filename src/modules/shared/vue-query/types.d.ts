@@ -1,21 +1,14 @@
-import '@tanstack/vue-query';
+import "@tanstack/vue-query";
 
-import type {
-  InvalidateMeta,
-  WeekInvalidateMeta,
-} from './plugins/invalidateQueries';
-import type { ToastMeta, WeekToastMeta } from './plugins/toast';
+import type { InvalidateMeta, WeekInvalidateMeta } from "./plugins/invalidateQueries";
+import type { ToastMeta, WeekToastMeta } from "./plugins/toast";
 
-export type MutationMeta<TData, TError, TVariables> = ToastMeta<
-  TData,
-  TError,
-  TVariables
-> &
+export type MutationMeta<TData, TError, TVariables> = ToastMeta<TData, TError, TVariables> &
   InvalidateMeta<TData, TVariables>;
 
 export type WeekMutationMeta = WeekToastMeta & WeekInvalidateMeta;
 
-declare module '@tanstack/vue-query' {
+declare module "@tanstack/vue-query" {
   interface Register {
     defaultError: Error;
     mutationMeta: WeekMutationMeta;

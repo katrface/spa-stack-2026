@@ -1,4 +1,4 @@
-import type { InfiniteData } from '@tanstack/vue-query';
+import type { InfiniteData } from "@tanstack/vue-query";
 
 type TList<TItem> = { list: TItem[] };
 
@@ -12,7 +12,7 @@ export const listFilter = <
 ): TData | undefined => {
   if (!oldData) return undefined;
 
-  if ('pages' in oldData) {
+  if ("pages" in oldData) {
     return {
       ...oldData,
       pages: oldData.pages.map((page) => ({
@@ -22,7 +22,7 @@ export const listFilter = <
     } as TData;
   }
 
-  if ('list' in oldData) {
+  if ("list" in oldData) {
     return {
       ...oldData,
       list: (oldData as TStructure).list.filter(predicate),
@@ -42,7 +42,7 @@ export const listMap = <
 ): TData | undefined => {
   if (!oldData) return undefined;
 
-  if ('pages' in oldData) {
+  if ("pages" in oldData) {
     return {
       ...oldData,
       pages: oldData.pages.map((page) => ({
@@ -52,7 +52,7 @@ export const listMap = <
     } as TData;
   }
 
-  if ('list' in oldData) {
+  if ("list" in oldData) {
     return {
       ...oldData,
       list: (oldData as TStructure).list.map(callbackFn),

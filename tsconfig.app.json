@@ -30,7 +30,7 @@
 
       "@shared/*": ["./src/modules/shared/*"],
       "@pim/*": ["./src/modules/pim/*"],
-      "@pim": ["./src/modules/pim/index.ts"],
+      "@pim": ["./src/modules/pim/index.ts"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "components.d.ts", "tests/**/*.ts"]

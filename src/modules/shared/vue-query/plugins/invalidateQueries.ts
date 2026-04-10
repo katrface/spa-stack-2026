@@ -1,6 +1,6 @@
-import type { InvalidateQueryFilters, QueryClient } from '@tanstack/vue-query';
+import type { InvalidateQueryFilters, QueryClient } from "@tanstack/vue-query";
 
-import { type MaybeGetterOnSuccess, toValueOnSuccess } from './shared';
+import { type MaybeGetterOnSuccess, toValueOnSuccess } from "./shared";
 
 // TODO подумать над исключением пересечений queryKey в invalidates и awaitInvalidates
 export type InvalidateMeta<
@@ -52,16 +52,10 @@ export const useInvalidateQueriesByMeta = () => {
     }
 
     if (meta.awaitInvalidates) {
-      const awaitInvalidates = toValueOnSuccess(
-        meta.awaitInvalidates,
-        data,
-        variables,
-      );
+      const awaitInvalidates = toValueOnSuccess(meta.awaitInvalidates, data, variables);
 
       await Promise.all(
-        awaitInvalidates.map((invalidateFilter) =>
-          queryClient.invalidateQueries(invalidateFilter),
-        ),
+        awaitInvalidates.map((invalidateFilter) => queryClient.invalidateQueries(invalidateFilter)),
       );
     }
   };

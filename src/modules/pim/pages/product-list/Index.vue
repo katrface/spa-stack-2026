@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { archiveProductOptions, productDetailsOptions } from './api';
-import ProductTable from './ui/ProductTable.vue';
-import { usePimMutation, usePimQuery } from '@pim/shared/vue-query';
+import { archiveProductOptions, productDetailsOptions } from "./api";
+import ProductTable from "./ui/ProductTable.vue";
+import { usePimMutation, usePimQuery } from "@pim/shared/vue-query";
 
-const query = usePimQuery(productDetailsOptions(() => ({ internalId: 'fc22db77-f649-478a-83a6-caa21e53d646' })));
+const query = usePimQuery(
+  productDetailsOptions(() => ({ internalId: "fc22db77-f649-478a-83a6-caa21e53d646" })),
+);
 const mutation = usePimMutation(archiveProductOptions());
 </script>
 
@@ -14,9 +16,6 @@ const mutation = usePimMutation(archiveProductOptions());
     <!-- <pre>
       {{ query }}
     </pre> -->
-    <UButton
-      label="Архивировать"
-      @click="() => mutation.mutate({ internalId: 'foo' })"
-    />
+    <UButton label="Архивировать" @click="() => mutation.mutate({ internalId: 'foo' })" />
   </UContainer>
 </template>

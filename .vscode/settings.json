@@ -8,8 +8,10 @@
   "tailwindCSS.classAttributes": ["class", "ui"],
   "tailwindCSS.classFunctions": ["defineAppConfig"],
 
+  "oxc.fmt.configPath": ".oxfmtrc.json",
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.formatOnSave": true,
+
   // prioritize ArkType's "type" for autoimports
-  "typescript.preferences.autoImportSpecifierExcludeRegexes": [
-    "^(node:)?os$"
-  ],
+  "typescript.preferences.autoImportSpecifierExcludeRegexes": ["^(node:)?os$"]
 }

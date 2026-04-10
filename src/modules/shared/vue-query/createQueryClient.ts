@@ -1,7 +1,7 @@
-import { MutationCache, QueryClient } from '@tanstack/vue-query';
+import { MutationCache, QueryClient } from "@tanstack/vue-query";
 
-import { useInvalidateQueriesByMeta } from './plugins/invalidateQueries';
-import { useToastByMeta } from './plugins/toast';
+import { useInvalidateQueriesByMeta } from "./plugins/invalidateQueries";
+import { useToastByMeta } from "./plugins/toast";
 
 export const createQueryClient = () => {
   const { onSuccessToast, onErrorToast } = useToastByMeta();

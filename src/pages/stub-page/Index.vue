@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { PAGE_NAME } from '@shared/config/pages';
+import { PAGE_NAME } from "@shared/config/pages";
 
 // Используем встроенные иконки (требуется @nuxt/icon)
-const iconName = 'i-lucide-construction'
+const iconName = "i-lucide-construction";
 </script>
 
 <template>
@@ -10,10 +10,7 @@ const iconName = 'i-lucide-construction'
     <div class="text-center max-w-md mx-auto">
       <!-- Анимированная иконка -->
       <div class="mb-6 flex justify-center">
-        <UIcon
-          :name="iconName"
-          class="w-20 h-20 text-primary animate-pulse"
-        />
+        <UIcon :name="iconName" class="w-20 h-20 text-primary animate-pulse" />
       </div>
 
       <!-- Заголовок и текст -->
@@ -35,12 +32,7 @@ const iconName = 'i-lucide-construction'
           label="Вернуться на главную"
         />
 
-        <UButton
-          variant="ghost"
-          size="lg"
-          label="Связаться с нами"
-          to="#"
-        />
+        <UButton variant="ghost" size="lg" label="Связаться с нами" to="#" />
       </div>
     </div>
   </UContainer>

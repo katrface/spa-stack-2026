@@ -1,21 +1,21 @@
 async function enableMocking() {
-  if (import.meta.env.VITE_MSW_ENABLED !== 'true') {
-    return
+  if (import.meta.env.VITE_MSW_ENABLED !== "true") {
+    return;
   }
 
-  const { worker } = await import('./browser')
+  const { worker } = await import("./browser");
   return worker.start({
     onUnhandledRequest(request, print) {
       // Ignore any requests containing "cdn.com" in their URL.
-      const url = new URL(request.url)
-      if (!url.pathname.startsWith('/api')) {
-        return
+      const url = new URL(request.url);
+      if (!url.pathname.startsWith("/api")) {
+        return;
       }
 
       // Otherwise, print an unhandled request warning.
-      print.warning()
+      print.warning();
     },
-  })
+  });
 }
 
-export default enableMocking
+export default enableMocking;

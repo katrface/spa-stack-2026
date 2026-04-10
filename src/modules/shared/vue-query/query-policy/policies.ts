@@ -1,4 +1,4 @@
-import { keepPreviousData } from '@tanstack/vue-query';
+import { keepPreviousData } from "@tanstack/vue-query";
 
 export const queryPolicies = {
   dynamic: {
