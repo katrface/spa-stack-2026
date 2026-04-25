@@ -1,4 +1,4 @@
-import { keepPreviousData } from "@tanstack/vue-query";
+import { keepPreviousData } from '@tanstack/vue-query'
 
 export const queryPolicies = {
   dynamic: {
@@ -24,6 +24,6 @@ export const queryPolicies = {
     refetchOnReconnect: true,
     refetchInterval: false,
   },
-} as const;
+} as const
 
-export type QueryPolicyName = keyof typeof queryPolicies;
+export type QueryPolicyName = keyof typeof queryPolicies

@@ -1,12 +1,13 @@
-import { mutationOptions } from "@shared/vue-query";
-import { productQueryKeys } from "./product.keys";
-import { TProductDetailsPayload, VProductDetailsPayload } from "./product.validators";
+import type { TProductDetailsPayload } from './product.validators'
+import { mutationOptions } from '@shared/vue-query'
+import { productQueryKeys } from './product.keys'
+import { VProductDetailsPayload } from './product.validators'
 
-export const archiveProductOptions = () =>
-  mutationOptions({
+export function archiveProductOptions() {
+  return mutationOptions({
     mutationFn: async (payload: TProductDetailsPayload) => {
-      const validatedPayload = VProductDetailsPayload.assert(payload);
-      console.log(validatedPayload);
+      const validatedPayload = VProductDetailsPayload.assert(payload)
+      console.log(validatedPayload)
     },
     meta: {
       successToast: (_data, variables) => ({
@@ -20,4 +21,5 @@ export const archiveProductOptions = () =>
         { queryKey: productQueryKeys.productDetails(varialbes) },
       ],
     },
-  });
+  })
+}

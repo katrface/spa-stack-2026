@@ -1,15 +1,13 @@
-import eslintPluginVue from "eslint-plugin-vue";
-import { defineConfigWithVueTs, vueTsConfigs } from "@vue/eslint-config-typescript";
-import pluginQuery from "@tanstack/eslint-plugin-query";
+import antfu from '@antfu/eslint-config'
+import pluginQuery from '@tanstack/eslint-plugin-query'
 
-export default defineConfigWithVueTs(
-  ...eslintPluginVue.configs["flat/recommended"],
-
-  vueTsConfigs.recommended,
-
-  ...pluginQuery.configs["flat/recommended"],
-
+export default antfu(
   {
-    ignores: ["dist/**", "node_modules/**", "vendor/**"],
+    pnpm: true,
+    typescript: {
+      tsconfigPath: 'tsconfig.json',
+    },
+    ignores: ['public/mockServiceWorker.js'],
   },
-);
+  pluginQuery.configs['flat/recommended'],
+)

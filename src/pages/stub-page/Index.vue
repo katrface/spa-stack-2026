@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { PAGE_NAME } from "@shared/config/pages";
+import { PAGE_NAME } from '@shared/config/pages'
 
 // Используем встроенные иконки (требуется @nuxt/icon)
-const iconName = "i-lucide-construction";
+const iconName = 'i-lucide-construction'
 </script>
 
 <template>

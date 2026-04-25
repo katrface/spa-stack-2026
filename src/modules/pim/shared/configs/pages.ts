@@ -1,6 +1,6 @@
 export const PIM_PAGE_NAME = {
-  HOME: "pim-home",
+  HOME: 'pim-home',
   PRODUCTS: {
-    INDEX: "product-index",
+    INDEX: 'product-index',
   },
-} as const;
+} as const

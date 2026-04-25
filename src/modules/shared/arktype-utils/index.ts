@@ -1,5 +1,6 @@
-import { type, type Type } from "arktype";
+import type { Type } from 'arktype'
+import { type } from 'arktype'
 
-export const isValid = <T>(validator: Type<T>, data: unknown): data is T => {
-  return !(validator(data) instanceof type.errors);
-};
+export function isValid<T>(validator: Type<T>, data: unknown): data is T {
+  return !(validator(data) instanceof type.errors)
+}

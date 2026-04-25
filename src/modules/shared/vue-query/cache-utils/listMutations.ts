@@ -1,63 +1,59 @@
-import type { InfiniteData } from "@tanstack/vue-query";
+import type { InfiniteData } from '@tanstack/vue-query'
 
-type TList<TItem> = { list: TItem[] };
+interface TList<TItem> { list: TItem[] }
 
-export const listFilter = <
+export function listFilter<
   TItem,
   TStructure extends TList<TItem>,
   TData extends TStructure | InfiniteData<TStructure>,
->(
-  oldData: TData | undefined,
-  predicate: (item: TItem) => boolean,
-): TData | undefined => {
-  if (!oldData) return undefined;
+>(oldData: TData | undefined, predicate: (item: TItem) => boolean): TData | undefined {
+  if (!oldData)
+    return undefined
 
-  if ("pages" in oldData) {
+  if ('pages' in oldData) {
     return {
       ...oldData,
-      pages: oldData.pages.map((page) => ({
+      pages: oldData.pages.map(page => ({
         ...page,
         list: page.list.filter(predicate),
       })),
-    } as TData;
+    }
   }
 
-  if ("list" in oldData) {
+  if ('list' in oldData) {
     return {
       ...oldData,
       list: (oldData as TStructure).list.filter(predicate),
-    } as TData;
+    }
   }
 
-  return oldData;
-};
+  return oldData
+}
 
-export const listMap = <
+export function listMap<
   TItem,
   TStructure extends TList<TItem>,
   TData extends TStructure | InfiniteData<TStructure>,
->(
-  oldData: TData | undefined,
-  callbackFn: (item: TItem) => TItem,
-): TData | undefined => {
-  if (!oldData) return undefined;
+>(oldData: TData | undefined, callbackFn: (item: TItem) => TItem): TData | undefined {
+  if (!oldData)
+    return undefined
 
-  if ("pages" in oldData) {
+  if ('pages' in oldData) {
     return {
       ...oldData,
-      pages: oldData.pages.map((page) => ({
+      pages: oldData.pages.map(page => ({
         ...page,
         list: page.list.map(callbackFn),
       })),
-    } as TData;
+    }
   }
 
-  if ("list" in oldData) {
+  if ('list' in oldData) {
     return {
       ...oldData,
       list: (oldData as TStructure).list.map(callbackFn),
-    } as TData;
+    }
   }
 
-  return oldData;
-};
+  return oldData
+}

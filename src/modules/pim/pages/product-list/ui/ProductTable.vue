@@ -1,52 +1,52 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import SkuActions from "./SkuActions.vue";
+import { ref } from 'vue'
+import SkuActions from './SkuActions.vue'
 
 // Описание колонок
 const columns = [
   {
-    accessorKey: "sku",
-    header: "SKU",
+    accessorKey: 'sku',
+    header: 'SKU',
   },
   {
-    accessorKey: "stockFBO",
-    header: "Остатки FBO, в шт.",
+    accessorKey: 'stockFBO',
+    header: 'Остатки FBO, в шт.',
   },
   {
-    accessorKey: "stockFBS",
-    header: "Остатки FBS, в шт.",
+    accessorKey: 'stockFBS',
+    header: 'Остатки FBS, в шт.',
   },
   {
-    accessorKey: "price",
-    header: "Цена",
+    accessorKey: 'price',
+    header: 'Цена',
   },
-  { id: "actions", header: "" },
-];
+  { id: 'actions', header: '' },
+]
 
 // Тестовые данные
 const items = ref([
   {
     sku: {
-      image: "https://image.kazanexpress.ru/ctghqh6mgl6h3d8muhqg/t_product_240_low.jpg",
-      title: "Пластиковый чемодан на колесах, с кодовым замком, белый",
-      internalId: "872b795c-467d-4b20-bcc6-4f0de9933ce5",
-      externalId: "872b795c-467d-4b20-bcc6-4f0de9933ce5",
+      image: 'https://image.kazanexpress.ru/ctghqh6mgl6h3d8muhqg/t_product_240_low.jpg',
+      title: 'Пластиковый чемодан на колесах, с кодовым замком, белый',
+      internalId: '872b795c-467d-4b20-bcc6-4f0de9933ce5',
+      externalId: '872b795c-467d-4b20-bcc6-4f0de9933ce5',
     },
     stockFBO: 150,
     stockFBS: 45,
-    price: "1 200 ₽",
+    price: '1 200 ₽',
   },
   {
     sku: {
-      image: "https://placeholder.com",
-      internalId: "INT-1002",
-      externalId: "EXT-9901",
+      image: 'https://placeholder.com',
+      internalId: 'INT-1002',
+      externalId: 'EXT-9901',
     },
     stockFBO: 0,
     stockFBS: 12,
-    price: "950 ₽",
+    price: '950 ₽',
   },
-]);
+])
 </script>
 
 <template>

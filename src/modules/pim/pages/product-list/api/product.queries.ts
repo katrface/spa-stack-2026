@@ -1,35 +1,38 @@
-import { infiniteQueryOptions, queryOptions } from "@tanstack/vue-query";
-import { toValue } from "vue";
-import {
+import type {
   ProductDetailsPayload,
   ProductListInfinitePayload,
+} from './product.keys'
+import { isValid } from '@shared/arktype-utils'
+import { infiniteQueryOptions, queryOptions } from '@tanstack/vue-query'
+import { toValue } from 'vue'
+import { getProductDetails } from './product.endpoints'
+import {
   productQueryKeys,
-} from "./product.keys";
-import { getProductDetails } from "./product.endpoints";
-import { VProductDetailsPayload } from "./product.validators";
-import { isValid } from "@shared/arktype-utils";
+} from './product.keys'
+import { VProductDetailsPayload } from './product.validators'
 
 // объеденины под queryOptions/infiniteQueryOptions, чтобы переиспользовать в useQuery/prefetchQuery и кастомизации options для конкретного случая
-export const productListInfiniteOptions =
-  () =>
-  ({ filter }: ProductListInfinitePayload) =>
+export function productListInfiniteOptions() {
+  return ({ filter }: ProductListInfinitePayload) =>
     infiniteQueryOptions({
       queryKey: productQueryKeys.productListInfinite({ filter }),
       queryFn: async ({ pageParam }): Promise<{ nextCursor?: string }> => {
-        console.log(pageParam);
-        return {};
+        console.log(pageParam)
+        return {}
       },
       initialPageParam: undefined as string | undefined,
-      getNextPageParam: (lastPage) => lastPage.nextCursor ?? undefined,
-    });
+      getNextPageParam: lastPage => lastPage.nextCursor ?? undefined,
+    })
+}
 
 // для tree shaking  каждая query в отдельной переменной
-export const productDetailsOptions = (payload: ProductDetailsPayload) =>
-  queryOptions({
+export function productDetailsOptions(payload: ProductDetailsPayload) {
+  return queryOptions({
     queryKey: productQueryKeys.productDetails(payload),
-    queryFn: () => {
-      const validatedPayload = VProductDetailsPayload.assert(toValue(payload));
-      return getProductDetails(validatedPayload);
+    queryFn: async () => {
+      const validatedPayload = VProductDetailsPayload.assert(toValue(payload))
+      return getProductDetails(validatedPayload)
     },
     enabled: () => isValid(VProductDetailsPayload, toValue(payload)),
-  });
+  })
+}

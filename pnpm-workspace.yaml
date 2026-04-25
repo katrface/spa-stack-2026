@@ -1,4 +1,8 @@
+shellEmulator: true
+
+trustPolicy: no-downgrade
+
 ignoredBuiltDependencies:
-  - "@tailwindcss/oxide"
+  - '@tailwindcss/oxide'
   - esbuild
   - vue-demi

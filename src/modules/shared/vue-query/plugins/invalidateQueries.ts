@@ -1,38 +1,39 @@
-import type { InvalidateQueryFilters, QueryClient } from "@tanstack/vue-query";
+import type { InvalidateQueryFilters, QueryClient } from '@tanstack/vue-query'
 
-import { type MaybeGetterOnSuccess, toValueOnSuccess } from "./shared";
+import type { MaybeGetterOnSuccess } from './shared'
+import { toValueOnSuccess } from './shared'
 
 // TODO подумать над исключением пересечений queryKey в invalidates и awaitInvalidates
-export type InvalidateMeta<
+export interface InvalidateMeta<
   TData,
   TVariables,
   TInvalidates extends InvalidateQueryFilters[] = InvalidateQueryFilters[],
   TAwaitInvalidates extends InvalidateQueryFilters[] = InvalidateQueryFilters[],
-> = {
-  invalidates?: MaybeGetterOnSuccess<TInvalidates, TData, TVariables>;
-  awaitInvalidates?: MaybeGetterOnSuccess<TAwaitInvalidates, TData, TVariables>;
-};
+> {
+  invalidates?: MaybeGetterOnSuccess<TInvalidates, TData, TVariables>
+  awaitInvalidates?: MaybeGetterOnSuccess<TAwaitInvalidates, TData, TVariables>
+}
 
-type WeekInvalidatesMeta = {
-  invalidates?: MaybeGetterOnSuccess<InvalidateQueryFilters[]>;
-  awaitInvalidates?: never;
-};
+interface WeekInvalidatesMeta {
+  invalidates?: MaybeGetterOnSuccess<InvalidateQueryFilters[]>
+  awaitInvalidates?: never
+}
 
-type WeekAwaitInvalidatesMeta = {
-  invalidates?: never;
-  awaitInvalidates?: MaybeGetterOnSuccess<InvalidateQueryFilters[]>;
-};
+interface WeekAwaitInvalidatesMeta {
+  invalidates?: never
+  awaitInvalidates?: MaybeGetterOnSuccess<InvalidateQueryFilters[]>
+}
 
-export type WeekInvalidateMeta = WeekInvalidatesMeta | WeekAwaitInvalidatesMeta;
+export type WeekInvalidateMeta = WeekInvalidatesMeta | WeekAwaitInvalidatesMeta
 
-type OnSuccessInvalidateParam = {
-  queryClient: QueryClient;
-  meta: WeekInvalidateMeta | undefined;
-  data: unknown;
-  variables: unknown;
-};
+interface OnSuccessInvalidateParam {
+  queryClient: QueryClient
+  meta: WeekInvalidateMeta | undefined
+  data: unknown
+  variables: unknown
+}
 
-export const useInvalidateQueriesByMeta = () => {
+export function useInvalidateQueriesByMeta() {
   const invalidateQueries = async ({
     queryClient,
     meta,
@@ -40,25 +41,25 @@ export const useInvalidateQueriesByMeta = () => {
     variables,
   }: OnSuccessInvalidateParam) => {
     if (!meta) {
-      return;
+      return
     }
 
     if (meta.invalidates) {
-      const invalidates = toValueOnSuccess(meta.invalidates, data, variables);
+      const invalidates = toValueOnSuccess(meta.invalidates, data, variables)
 
       invalidates.forEach((invalidateFilter) => {
-        queryClient.invalidateQueries(invalidateFilter);
-      });
+        queryClient.invalidateQueries(invalidateFilter)
+      })
     }
 
     if (meta.awaitInvalidates) {
-      const awaitInvalidates = toValueOnSuccess(meta.awaitInvalidates, data, variables);
+      const awaitInvalidates = toValueOnSuccess(meta.awaitInvalidates, data, variables)
 
       await Promise.all(
-        awaitInvalidates.map((invalidateFilter) => queryClient.invalidateQueries(invalidateFilter)),
-      );
+        awaitInvalidates.map(async invalidateFilter => queryClient.invalidateQueries(invalidateFilter)),
+      )
     }
-  };
+  }
 
-  return { invalidateQueries };
-};
+  return { invalidateQueries }
+}

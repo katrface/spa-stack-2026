@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { TProduct } from "../api";
+import type { TProduct } from '../api'
 
-defineProps<{ row: TProduct }>();
+defineProps<{ row: TProduct }>()
 </script>
 
 <template>

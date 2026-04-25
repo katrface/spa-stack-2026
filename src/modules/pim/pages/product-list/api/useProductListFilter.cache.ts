@@ -1,25 +1,26 @@
-import { InfiniteData, useQueryClient } from "@tanstack/vue-query";
-import { productQueryKeys } from "./product.keys";
-import { listFilter } from "@shared/vue-query";
+import type { InfiniteData } from '@tanstack/vue-query'
+import { listFilter } from '@shared/vue-query'
+import { useQueryClient } from '@tanstack/vue-query'
+import { productQueryKeys } from './product.keys'
 
-type Product = { productId: string };
+interface Product { productId: string }
 
-type ProductListResponse = {
-  list: Product[];
-  nextCursor: string | null;
-};
+interface ProductListResponse {
+  list: Product[]
+  nextCursor: string | null
+}
 
-export const useProductListFilter = () => {
-  const queryClient = useQueryClient();
+export function useProductListFilter() {
+  const queryClient = useQueryClient()
 
   const filterProductList = (predicate: (product: Product) => boolean) => {
     queryClient.setQueriesData<InfiniteData<ProductListResponse>>(
       { queryKey: productQueryKeys.allProductInfinityLists() },
-      (oldData) => listFilter(oldData, predicate),
-    );
-  };
+      oldData => listFilter(oldData, predicate),
+    )
+  }
 
   return {
     filterProductList,
-  };
-};
+  }
+}

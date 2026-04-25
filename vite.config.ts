@@ -1,11 +1,12 @@
 /// <reference types="vitest/config" />
-import { fileURLToPath, URL } from "node:url";
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import ui from "@nuxt/ui/vite";
-import { analyzer } from "vite-bundle-analyzer";
-import { playwright } from "@vitest/browser-playwright";
-import path from "node:path";
+
+import path from 'node:path'
+import { fileURLToPath, URL } from 'node:url'
+import ui from '@nuxt/ui/vite'
+import vue from '@vitejs/plugin-vue'
+import { playwright } from '@vitest/browser-playwright'
+import { defineConfig } from 'vite'
+import { analyzer } from 'vite-bundle-analyzer'
 
 export default defineConfig({
   plugins: [
@@ -20,8 +21,8 @@ export default defineConfig({
       },
       ui: {
         colors: {
-          primary: "green",
-          neutral: "zinc",
+          primary: 'green',
+          neutral: 'zinc',
         },
       },
     }),
@@ -29,13 +30,13 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@pages": fileURLToPath(new URL("./src/pages", import.meta.url)),
-      "@app": fileURLToPath(new URL("./src/app", import.meta.url)),
-      "@components": fileURLToPath(new URL("./src/components", import.meta.url)),
-      "@tests": fileURLToPath(new URL("./tests", import.meta.url)),
+      '@pages': fileURLToPath(new URL('./src/pages', import.meta.url)),
+      '@app': fileURLToPath(new URL('./src/app', import.meta.url)),
+      '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
+      '@tests': fileURLToPath(new URL('./tests', import.meta.url)),
 
-      "@shared": fileURLToPath(new URL("./src/modules/shared", import.meta.url)),
-      "@pim": fileURLToPath(new URL("./src/modules/pim", import.meta.url)),
+      '@shared': fileURLToPath(new URL('./src/modules/shared', import.meta.url)),
+      '@pim': fileURLToPath(new URL('./src/modules/pim', import.meta.url)),
     },
   },
   build: {
@@ -44,36 +45,36 @@ export default defineConfig({
         chunkFileNames: (chunkInfo) => {
           if (chunkInfo.facadeModuleId) {
             const relativePath = path.relative(
-              path.resolve(import.meta.dirname, "src"),
+              path.resolve(import.meta.dirname, 'src'),
               path.dirname(chunkInfo.facadeModuleId),
-            );
+            )
 
-            const dir = relativePath === "." ? "" : `${relativePath.replaceAll("\\", "/")}/`;
-            return `chunk/${dir}[name].js`;
+            const dir = relativePath === '.' ? '' : `${relativePath.replaceAll('\\', '/')}/`
+            return `chunk/${dir}[name].js`
           }
-          return "chunk/[name].js";
+          return 'chunk/[name].js'
         },
-        entryFileNames: "entry/[name].js",
-        assetFileNames: "assets/[name][extname]",
+        entryFileNames: 'entry/[name].js',
+        assetFileNames: 'assets/[name][extname]',
       },
     },
   },
   test: {
-    coverage: { provider: "v8" },
+    coverage: { provider: 'v8' },
 
-    include: ["**/__tests__/**/*.unit.spec.ts", "**/__tests__/**/*.visual.spec.ts"],
+    include: ['**/__tests__/**/*.unit.spec.ts', '**/__tests__/**/*.visual.spec.ts'],
     browser: {
       provider: playwright(),
       enabled: true,
       headless: true,
       instances: [
         {
-          browser: "chromium",
+          browser: 'chromium',
           viewport: { width: 1280, height: 720 },
         },
       ],
     },
 
-    setupFiles: ["./tests/setup.ts"],
+    setupFiles: ['./tests/setup.ts'],
   },
-});
+})

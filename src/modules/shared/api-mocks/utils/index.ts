@@ -1,5 +1,5 @@
-import { HttpResponse } from "msw";
+import { HttpResponse } from 'msw'
 
-export const throwNotFound = () => {
-  throw HttpResponse.json({ error: "Not found" }, { status: 404 });
-};
+export function throwNotFound() {
+  throw HttpResponse.json({ error: 'Not found' }, { status: 404 })
+}

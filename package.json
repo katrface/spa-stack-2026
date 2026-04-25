@@ -1,19 +1,23 @@
 {
   "name": "nuxt-ui",
-  "private": true,
   "type": "module",
+  "private": true,
+  "packageManager": "pnpm@10.33.2",
+  "engines": {
+    "node": "24.14.1",
+    "pnpm": ">=10.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "fmt": "oxfmt",
-    "fmt:check": "oxfmt --check",
+    "typecheck": "vue-tsc -p ./tsconfig.app.json",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
     "test": "vitest --browser.headless=false",
     "test:unit": "vitest run .unit.spec.ts",
     "coverage:unit": "vitest run .unit.spec.ts --coverage",
     "test:visual": "vitest run .visual.spec.ts",
-    "lint": "eslint --ext .js,.vue src",
-    "typecheck": "vue-tsc -p ./tsconfig.app.json",
     "msw:init": "msw init public/ --save"
   },
   "dependencies": {
@@ -28,6 +32,7 @@
     "vue-router": "5.0.4"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "8.2.0",
     "@tanstack/eslint-plugin-query": "5.97.0",
     "@total-typescript/ts-reset": "0.6.1",
     "@types/node": "25.5.2",
@@ -38,7 +43,6 @@
     "eslint": "10.2.0",
     "eslint-plugin-vue": "10.8.0",
     "msw": "2.13.2",
-    "oxfmt": "^0.44.0",
     "typescript": "6.0.2",
     "typescript-eslint": "8.58.1",
     "vite": "8.0.8",
@@ -47,11 +51,6 @@
     "vitest-browser-vue": "2.1.0",
     "vue-tsc": "3.2.6"
   },
-  "engines": {
-    "node": "24.14.1",
-    "pnpm": ">=10.0.0"
-  },
-  "packageManager": "pnpm@10.33.0",
   "msw": {
     "workerDirectory": [
       "public"
