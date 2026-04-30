@@ -15,7 +15,7 @@ export const PIM_ROUTES: RouteRecordRaw[] = [
         path: 'products',
         component: async () => import('@pim/pages/product-list/Index.vue'),
         beforeEnter: async () => {
-          pimQueryClient.prefetchQuery(
+          void pimQueryClient.prefetchQuery(
             productDetailsOptions({ internalId: 'fc22db77-f649-478a-83a6-caa21e53d646' }),
           )
         },

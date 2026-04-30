@@ -43,7 +43,7 @@ export default defineConfig({
     rolldownOptions: {
       output: {
         chunkFileNames: (chunkInfo) => {
-          if (chunkInfo.facadeModuleId) {
+          if (chunkInfo.facadeModuleId !== null && chunkInfo.facadeModuleId !== undefined) {
             const relativePath = path.relative(
               path.resolve(import.meta.dirname, 'src'),
               path.dirname(chunkInfo.facadeModuleId),

@@ -7,11 +7,11 @@ import { RouterView } from 'vue-router'
 <template>
   <UApp :locale="ru">
     <div class="flex h-screen w-full">
-      <BaseLayout />
-
-      <UMain class="flex-1 min-w-0 overflow-y-auto">
-        <RouterView />
-      </UMain>
+      <BaseLayout>
+        <UMain class="flex-1 min-w-0 overflow-y-auto">
+          <RouterView />
+        </UMain>
+      </BaseLayout>
     </div>
   </UApp>
 </template>
