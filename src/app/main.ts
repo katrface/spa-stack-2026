@@ -1,4 +1,3 @@
-import type { Component } from 'vue'
 import ui from '@nuxt/ui/vue-plugin'
 import enableMocking from '@shared/api-mocks'
 import { VueQueryPlugin } from '@tanstack/vue-query'
@@ -11,7 +10,7 @@ import '@app/assets/css/main.css'
 async function bootstrap() {
   await enableMocking()
 
-  const app = createApp(App as Component)
+  const app = createApp(App)
 
   app.use(router)
   app.use(ui)
