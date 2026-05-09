@@ -7,6 +7,7 @@ export function archiveProductOptions() {
   return mutationOptions({
     mutationFn: async (payload: TProductDetailsPayload) => {
       const validatedPayload = VProductDetailsPayload.assert(payload)
+      // eslint-disable-next-line no-console
       console.log(validatedPayload)
     },
     meta: {

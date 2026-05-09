@@ -48,7 +48,7 @@ export function useInvalidateQueriesByMeta() {
       const invalidates = toValueOnSuccess(meta.invalidates, data, variables)
 
       invalidates.forEach((invalidateFilter) => {
-        queryClient.invalidateQueries(invalidateFilter)
+        void queryClient.invalidateQueries(invalidateFilter)
       })
     }
 

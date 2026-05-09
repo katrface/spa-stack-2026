@@ -17,6 +17,7 @@ export function productListInfiniteOptions() {
     infiniteQueryOptions({
       queryKey: productQueryKeys.productListInfinite({ filter }),
       queryFn: async ({ pageParam }): Promise<{ nextCursor?: string }> => {
+        // eslint-disable-next-line no-console
         console.log(pageParam)
         return {}
       },

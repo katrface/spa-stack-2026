@@ -2,6 +2,11 @@
 import type { TProduct } from '../api'
 
 defineProps<{ row: TProduct }>()
+defineEmits<{
+  edit: [row: TProduct]
+  archive: [row: TProduct]
+  delete: [row: TProduct]
+}>()
 </script>
 
 <template>

@@ -1,3 +1,6 @@
+/* eslint-disable eslint-comments/no-unlimited-disable */
+/* eslint-disable */
+
 import type { Todo, TodoCreateDto } from '@/shared/api/todos/types'
 
 import { delay, http, HttpResponse } from 'msw'

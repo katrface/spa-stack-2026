@@ -6,7 +6,7 @@ describe('productTable', () => {
   it('отображает заголовок продукта', async () => {
     const screen = await renderApp(ProductTable)
 
-    await expect(screen.container).toHaveTextContent(
+    expect(screen.container).toHaveTextContent(
       'Пластиковый чемодан на колесах, с кодовым замком, белый',
     )
   })

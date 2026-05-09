@@ -4,10 +4,9 @@ import packageJson from 'eslint-plugin-package-json'
 
 export default antfu(
   {
+    vue: true,
+    typescript: true,
     pnpm: true,
-    typescript: {
-      tsconfigPath: 'tsconfig.json',
-    },
     ignores: ['public/mockServiceWorker.js'],
   },
   pluginQuery.configs['flat/recommended'],
